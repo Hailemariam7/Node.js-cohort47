@@ -1,6 +1,6 @@
 import express from "express";
 import fetch from "node-fetch";
-import { KEYS } from "./sources/keys.js";
+import keys from "./sources/keys.js";
 const app = express();
 
 app.use(express.json());
@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 app.get("/weather/:cityName", (req, res) => {
   const cityName = req.params.cityName;
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${KEYS.API_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${keys.API_KEY}`
   )
     .then((response) => response.json())
     .then((response) => {

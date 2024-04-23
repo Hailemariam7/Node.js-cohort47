@@ -31,8 +31,8 @@ describe("POST /weather/:cityName", () => {
     expect(response.body.temperature).toBeDefined();
   });
 
-  it("Should return a 404 status with the correct data", async () => {
-    const response = await request.post("/weather/NotACity");
+  it("Should return a 404 status with a wrong city name", async () => {
+    const response = await request.post("/weather/unknown");
     expect(response.body.weatherText).toBe("City not found!");
   });
 });
